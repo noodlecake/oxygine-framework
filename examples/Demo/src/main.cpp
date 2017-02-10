@@ -31,7 +31,7 @@ int mainloop()
     if (core::beginRendering())
     {
         Color clearColor(32, 32, 32, 255);
-        Rect viewport(Point(0, 0), core::getDisplaySize());
+        oxygine::Rect viewport(oxygine::Point(0, 0), core::getDisplaySize());
         // Render all actors inside the stage. Actor::render will also be called for all its children
         getStage()->render(clearColor, viewport);
 
@@ -64,7 +64,7 @@ void run()
 
     // Create the stage. Stage is a root node for all updateable and drawable objects
     Stage::instance = new Stage(true);
-    Point size = core::getDisplaySize();
+    oxygine::Point size = core::getDisplaySize();
     getStage()->setSize(size);
 
     // DebugActor is a helper actor node. It shows FPS, memory usage and other useful stuff

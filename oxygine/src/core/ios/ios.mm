@@ -54,11 +54,18 @@ namespace oxygine
         void blitPremultiply(const ImageData &src, const ImageData &dest);
     }
     
-#if TARGET_OS_IPHONE
+#ifdef __APPLE__
     bool nsImageLoad(Image &mt, void * pData, int nDatalen, bool premultiplied, TextureFormat destFormat)
     {
-        NSData *data = [NSData dataWithBytesNoCopy:pData length:nDatalen];
+        // We need copy here...
+        // If you don't copy, this NSData will take ownership of the pointer.
+        // In oxygine, the pointer is freed elsewhere, so we need a copy here
+        NSData *data = [NSData dataWithBytes:pData length:nDatalen];
+#if TARGET_OS_IPHONE
         UIImage *image = [UIImage imageWithData:data];
+#else
+        NSBitmapImageRep *image = [NSBitmapImageRep imageRepWithData:data];
+#endif
         
         GLuint width = (GLuint)CGImageGetWidth(image.CGImage);
         GLuint height = (GLuint)CGImageGetHeight(image.CGImage);
@@ -91,37 +98,6 @@ namespace oxygine
         temp.unlock();
 
         mt.init(width, height, destFormat);
-        ImageData dest = mt.lock();
-        
-        if (!premultiplied)
-        {
-            operations::blitPremultiply(src, dest);
-        }
-        else
-        {
-            operations::blit(src, dest);
-        }
-        
-        mt.unlock();
-        
-        
-        return true;
-    }
-#else
-    bool nsImageLoad(Image &mt, void * pData, int nDatalen, bool premultiplied, TextureFormat destFormat)
-    {
-        NSData *data = [NSData dataWithBytesNoCopy:pData length:nDatalen];
-        NSBitmapImageRep *image = [NSBitmapImageRep imageRepWithData:data];
-        int w = image.size.width;
-        int h = image.size.height;
-        
-        TextureFormat srcFormat = image.bitsPerPixel == 32 ? TF_R8G8B8A8 : TF_R8G8B8;
-        ImageData src(w, h, (int) image.bytesPerRow, srcFormat, image.bitmapData);
-        
-        if (destFormat == TF_UNDEFINED)
-            destFormat = srcFormat;
-        
-        mt.init(w, h, destFormat);
         ImageData dest = mt.lock();
         
         if (!premultiplied)

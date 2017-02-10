@@ -471,7 +471,7 @@ namespace oxygine
 #endif
 
 #if __APPLE__
-#define USE_NSIMAGE  0
+#define USE_NSIMAGE  1
 #endif
 
 #if USE_NSIMAGE

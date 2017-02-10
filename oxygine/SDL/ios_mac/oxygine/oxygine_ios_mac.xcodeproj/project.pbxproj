@@ -1716,8 +1716,6 @@
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"_DEBUG=1",
-					OX_HAVE_LIBPNG,
-					OX_HAVE_LIBJPEG,
 					"$(inherited)",
 				);
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
@@ -1725,6 +1723,10 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = NO;
+				HEADER_SEARCH_PATHS = (
+					"$(SDL)/include/",
+					../../../src,
+				);
 				LD_DYLIB_INSTALL_NAME = "";
 				MACH_O_TYPE = staticlib;
 				MACOSX_DEPLOYMENT_TARGET = 10.11;
@@ -1760,15 +1762,16 @@
 				EXECUTABLE_EXTENSION = a;
 				EXECUTABLE_PREFIX = lib;
 				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					OX_HAVE_LIBPNG,
-					OX_HAVE_LIBJPEG,
-				);
+				GCC_PREPROCESSOR_DEFINITIONS = "";
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
 				GCC_WARN_UNDECLARED_SELECTOR = NO;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = NO;
+				HEADER_SEARCH_PATHS = (
+					"$(SDL)/include/",
+					../../../src,
+				);
 				LD_DYLIB_INSTALL_NAME = "";
 				MACH_O_TYPE = staticlib;
 				MACOSX_DEPLOYMENT_TARGET = 10.11;
@@ -1805,8 +1808,6 @@
 				HEADER_SEARCH_PATHS = (
 					"$(SDL)/include/",
 					../../../src,
-					"$(THIRD_PARTY)/libpng",
-					"$(THIRD_PARTY)/libjpeg",
 				);
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MACOSX_DEPLOYMENT_TARGET = 10.11;
@@ -1841,8 +1842,6 @@
 				HEADER_SEARCH_PATHS = (
 					"$(SDL)/include/",
 					../../../src,
-					"$(THIRD_PARTY)/libpng",
-					"$(THIRD_PARTY)/libjpeg",
 				);
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MACOSX_DEPLOYMENT_TARGET = 10.11;
@@ -1860,15 +1859,12 @@
 				EXECUTABLE_PREFIX = lib;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"_DEBUG=1",
-					OX_HAVE_LIBPNG,
-					OX_HAVE_LIBJPEG,
+					"DEBUG=1",
 				);
 				GCC_WARN_UNUSED_VARIABLE = NO;
 				HEADER_SEARCH_PATHS = (
 					"$(SDL)/include/",
 					../../../src,
-					"$(THIRD_PARTY)/libpng",
-					"$(THIRD_PARTY)/libjpeg",
 				);
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_NAME = oxygine_ios;
@@ -1881,16 +1877,11 @@
 			buildSettings = {
 				ENABLE_NS_ASSERTIONS = NO;
 				EXECUTABLE_PREFIX = lib;
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					OX_HAVE_LIBPNG,
-					OX_HAVE_LIBJPEG,
-				);
+				GCC_PREPROCESSOR_DEFINITIONS = "";
 				GCC_WARN_UNUSED_VARIABLE = NO;
 				HEADER_SEARCH_PATHS = (
 					"$(SDL)/include/",
 					../../../src,
-					"$(THIRD_PARTY)/libpng",
-					"$(THIRD_PARTY)/libjpeg",
 				);
 				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_NAME = oxygine_ios;
